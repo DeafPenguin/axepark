@@ -35,6 +35,13 @@
 			<version>3.1.0</version>
 		</dependency>
 
+		<!-- SWAGGER DOCUMENTACAO -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.6.12</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
