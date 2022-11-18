@@ -2,7 +2,7 @@
 📄<br>Axe Parking
 </h1>
 
-## Projeto de gerenciamento de estacionamento.
+## Projeto de gerenciamento de estacionamento
 
 Projeto criado a partir do desafio de projeto do [Bootcamp Québec Java Digital](https://web.dio.me/track/quebec-java-digital), da Digital Innovation One.
 
