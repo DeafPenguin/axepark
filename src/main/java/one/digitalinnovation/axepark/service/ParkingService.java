@@ -1,5 +1,6 @@
 package one.digitalinnovation.axepark.service;
 
+import one.digitalinnovation.axepark.exception.ParkingNotFoundException;
 import one.digitalinnovation.axepark.model.Parking;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +33,11 @@ public class ParkingService {
     }
 
     public Parking findById(String id) {
-        return parkingMap.get(id);
+        Parking parking = parkingMap.get(id);
+        if (parking == null){
+            throw new ParkingNotFoundException(id);
+        }
+        return parking;
     }
 
     public Parking create(Parking parkingCreate) {
