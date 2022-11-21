@@ -38,19 +38,41 @@ public class ParkingController {
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Find by Id")
+    @Operation(summary = "Find a parking by Id")
     public ResponseEntity<ParkingDTO> findById(@PathVariable String id){
         Parking parking = parkingService.findById(id);
         ParkingDTO result = parkingMapper.toParkingDTO(parking);
         return ResponseEntity.ok(result);
     }
 
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Delete a parking by Id")
+    public ResponseEntity delete(@PathVariable String id){
+        parkingService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @PostMapping
     @Operation(summary = "Create a entry for a car parking")
     public ResponseEntity<ParkingDTO> create(@RequestBody ParkingCreateDTO dto){
-        var parkingCreate = parkingMapper.toParkingCreate(dto);
-        var parking = parkingService.create(parkingCreate);
-        var result = parkingMapper.toParkingDTO(parking);
+        Parking parkingCreate = parkingMapper.toParkingCreate(dto);
+        Parking parking = parkingService.create(parkingCreate);
+        ParkingDTO result = parkingMapper.toParkingDTO(parking);
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
+    }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Update a entry for a car parking")
+    public ResponseEntity<ParkingDTO> update(@PathVariable String id, @RequestBody ParkingCreateDTO dto){
+        Parking parkingUpdate = parkingMapper.toParkingCreate(dto);
+        Parking parking = parkingService.update(id, parkingUpdate);
+        return ResponseEntity.ok(parkingMapper.toParkingDTO(parking));
+    }
+
+    @PostMapping("/{id}")
+    @Operation(summary = "Update a entry for a car parking")
+    public ResponseEntity<ParkingDTO> exit(@PathVariable String id){
+        Parking parking = parkingService.exit(id);
+        return ResponseEntity.ok(parkingMapper.toParkingDTO(parking));
     }
 }

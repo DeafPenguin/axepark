@@ -47,4 +47,27 @@ public class ParkingService {
         parkingMap.put(uuid, parkingCreate);
         return parkingCreate;
     }
+
+    public void delete(String id) {
+        findById(id);
+        parkingMap.remove(id);
+    }
+
+    public Parking update(String id, Parking parkingCreate) {
+        Parking parking = findById(id);
+//        parking.setLicense(parkingCreate.getLicense());
+//        parking.setState(parkingCreate.getState());
+//        parking.setModel(parkingCreate.getModel());
+        parking.setColor(parkingCreate.getColor());
+        parkingMap.replace(id, parking);
+        return parking;
+    }
+
+    public Parking exit(String id) {
+        Parking parking = findById(id);
+        parking.setExitDate(LocalDateTime.now());
+        // TODO Calcular o valor do estacionamento
+        parkingMap.put(id, parking);
+        return parking;
+    }
 }
