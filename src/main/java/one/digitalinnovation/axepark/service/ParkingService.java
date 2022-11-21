@@ -55,6 +55,7 @@ public class ParkingService {
 
     public Parking update(String id, Parking parkingCreate) {
         Parking parking = findById(id);
+        // TODO Ajustar para atualizar todos os campos de maneira dinâmica
 //        parking.setLicense(parkingCreate.getLicense());
 //        parking.setState(parkingCreate.getState());
 //        parking.setModel(parkingCreate.getModel());
