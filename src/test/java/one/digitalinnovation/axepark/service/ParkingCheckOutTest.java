@@ -8,5 +8,6 @@ class ParkingCheckOutTest {
 
     @Test
     void getBill() {
+        // TODO desenvolver testes envolvendo as regras de negócio
     }
 }
